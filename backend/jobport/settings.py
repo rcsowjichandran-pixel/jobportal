@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lgothwtgd+wdnlj0$4z#1n13017war3p%p!-2k73*pbj)prp#u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jobportal-2lzg.onrender.com',
+    'localhost',
+    '127.0.0.1',]
 
 
 # Application definition
@@ -83,8 +85,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 CORS_ALLOWED_ORIGINS = [ 'https://jobportal-2lzg.onrender.com','localhost'
-
 ]
+
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
