@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,7 +85,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-CORS_ALLOWED_ORIGINS = [ 'https://jobportal-2lzg.onrender.com','localhost'
+CORS_ALLOWED_ORIGINS = [ 'https://jobportal-2lzg.onrender.com',
 ]
 
 
@@ -146,7 +147,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
