@@ -13,6 +13,10 @@ from .serializers import (
     UserSerializer,
 )
 
+class TestView(APIView):
+    def get(self, request):
+        return Response({"message": "API working"})
+
 
 class RegisterView(APIView):
     def post(self, request):

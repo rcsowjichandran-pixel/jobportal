@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'django_filters',
     'templates',
     'static',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -85,9 +87,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-CORS_ALLOWED_ORIGINS = [ 'https://jobportal-2lzg.onrender.com',
-]
-
+CORS_ALLOWED_ORIGINS = [ 'https://jobportal-2lzg.onrender.com','http://localhost:5173',"http://127.0.0.1:5173",]
+# CORS_ALLOW_ALL_ORIGINS = True
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases

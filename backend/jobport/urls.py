@@ -19,6 +19,7 @@ from django.urls import path,include,re_path
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from core.views import TestView
 
 from core.views import RegisterView
 
@@ -30,6 +31,8 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path('test/', TestView.as_view()),
+
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
@@ -37,7 +40,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
 
     #React App
-    re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
+    # re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
     ] 
 
 urlpatterns += static(
