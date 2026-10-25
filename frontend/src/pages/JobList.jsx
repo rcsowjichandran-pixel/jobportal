@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const API = 'http://127.0.0.1:8000/api';
+const API = '/api';
 
 
 function JobList() {
@@ -19,7 +19,7 @@ function JobList() {
       setError('');
       try {
         const query = new URLSearchParams(Object.entries({ title: submitted.search, location: submitted.location, job_type: submitted.job_type }).filter(([, value]) => value));
-        const response = await axios.get(`${API}/jobs/?${query}`);
+        const response = await axios.get(`/api/jobs/?${query}`);
         console.log("API Response:", response.data);
         console.log("Jobs being set:", response.data);
         if (active) setJobs(Array.isArray(response.data) ? response.data : response.data.results || []);
