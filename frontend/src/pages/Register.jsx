@@ -11,7 +11,7 @@ function Register() {
   async function handleSubmit(event) {
     event.preventDefault(); setBusy(true); setFeedback(null);
     try {
-      await axios.post('http://localhost:8000/register/', form);
+      await axios.post('/register/', form);
       setFeedback({ type: 'success', text: 'Account created. Taking you to log in…' });
       window.setTimeout(() => navigate('/login'), 900);
     } catch (error) {

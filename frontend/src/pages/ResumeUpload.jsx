@@ -14,7 +14,7 @@ function ResumeUpload() {
     const formData = new FormData(); formData.append('file', file);
     try {
       const token = localStorage.getItem('access_token');
-      await axios.post('http://localhost:8000/api/resume/upload/', formData, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post('/api/resume/upload/', formData, { headers: { Authorization: `Bearer ${token}` } });
       setFeedback({ type: 'success', text: 'Your resume is uploaded and ready to use with applications.' });
     } catch (error) {
       const detail = error.response?.data?.detail || (error.response?.status === 400 ? 'A resume may already be attached to this account. Try signing in again or contact support.' : 'Upload didn’t go through. Check your connection and try again.');

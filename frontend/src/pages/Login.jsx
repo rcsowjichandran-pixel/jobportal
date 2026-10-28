@@ -12,7 +12,7 @@ function Login() {
   async function handleSubmit(event) {
     event.preventDefault(); setBusy(true); setError('');
     try {
-      const response = await axios.post('http://localhost:8000/api/token/', { username, password });
+      const response = await axios.post('/api/token/', { username, password });
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
       navigate('/dashboard', { replace: true });

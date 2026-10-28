@@ -14,7 +14,7 @@ function UserDashboard() {
       try {
         const token = localStorage.getItem('access_token');
         if (!token) { navigate('/login', { replace: true }); return; }
-        const response = await axios.get('http://localhost:8000/api/my-applications/', { headers: { Authorization: `Bearer ${token}` } });
+        const response = await axios.get('/api/my-applications/', { headers: { Authorization: `Bearer ${token}` } });
         if (active) setApplications(Array.isArray(response.data) ? response.data : response.data.results || []);
       } catch (err) {
         if (active) setError(err.response?.status === 401 ? 'Your session expired. Please log in again.' : 'We couldn’t load your applications. Please try again.');

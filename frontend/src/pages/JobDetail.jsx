@@ -11,7 +11,7 @@ function JobDetail() {
 
   useEffect(() => {
     let active = true;
-    axios.get(`http://localhost:8000/api/jobs/${id}/`)
+    axios.get(`/api/jobs/${id}/`)
       .then((response) => { if (active) setJob(response.data); })
       .catch(() => { if (active) setMessage({ type: 'error', text: 'We couldn’t find that role. It may have been removed.' }); })
       .finally(() => { if (active) setLoading(false); });
@@ -27,7 +27,7 @@ function JobDetail() {
     setApplying(true);
     setMessage(null);
     try {
-      await axios.post('http://localhost:8000/api/apply/', { job_id: job.id }, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.post('/api/apply/', { job_id: job.id }, { headers: { Authorization: `Bearer ${token}` } });
       setMessage({ type: 'success', text: 'Application sent. You can follow its progress from My applications.' });
     } catch (error) {
       const detail = error.response?.data?.detail || 'Your application could not be sent. Please try again.';

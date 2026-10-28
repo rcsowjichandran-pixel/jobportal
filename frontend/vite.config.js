@@ -4,4 +4,22 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      '/api': 'http://127.0.0.1:8000',
+      '/register': 'http://127.0.0.1:8000',
+    },
+  },
+  build: {
+    outDir: '../backend/static/frontend',
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/app.js',
+        assetFileNames: (assetInfo) => assetInfo.name?.endsWith('.css')
+          ? 'assets/app.css'
+          : 'assets/[name][extname]',
+      },
+    },
+  },
 })
